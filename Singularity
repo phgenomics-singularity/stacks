@@ -2,20 +2,20 @@ Bootstrap: docker
 From: ubuntu:trusty-20170817
 
 %help
-A Singularity image for Stacks v2.0Beta6
+A Singularity image for Stacks v2.0
 
 %labels
 Maintainer Anders Goncalves da Silva
 Build 1.0
-Stacks v2.0Beta9 (with SparseHash)
+Stacks v2.0 (with SparseHash)
 
 %post
 
-  STACKS_VERSION=2.0Beta9
-  
+  STACKS_VERSION=2.0
+
   sudo locale-gen en_US.UTF-8
   sudo update-locale
-  
+
   sudo apt-get --yes update
   sudo apt-get --yes install build-essential autoconf automake wget git zlib1g-dev libbz2-dev libncurses5-dev curl unzip
   sudo apt-get --yes install libdbd-mysql-perl
@@ -26,9 +26,9 @@ Stacks v2.0Beta9 (with SparseHash)
   sudo apt-get --yes install g++-4.9
 
   cd /tmp
-  
+
   echo "Installing Stacks"
-  
+
   STACKS_URL="http://catchenlab.life.illinois.edu/stacks/source/stacks-${STACKS_VERSION}.tar.gz"
   STACKS_ZIP=stacks.tar.gz
   wget -O ${STACKS_ZIP} "${STACKS_URL}"
@@ -39,17 +39,17 @@ Stacks v2.0Beta9 (with SparseHash)
   sudo make install
   sudo mkdir /tests
   sudo mv tests/* /tests
-  
+
   echo "Sorting some env variables..."
   sudo echo 'LANGUAGE="en_US:en"' >> $SINGULARITY_ENVIRONMENT
   sudo echo 'LC_ALL="en_US.UTF-8"' >> $SINGULARITY_ENVIRONMENT
   sudo echo 'LC_CTYPE="UTF-8"' >> $SINGULARITY_ENVIRONMENT
   sudo echo 'LANG="en_US.UTF-8"' >>  $SINGULARITY_ENVIRONMENT
-  
+
   echo "Done"
-  
+
 %runscript
-  echo "Welcome to STACKS 2.0Beta9" >&2
+  echo "Welcome to STACKS 2.0" >&2
   exec "$@"
 
 %test
@@ -58,5 +58,3 @@ Stacks v2.0Beta9 (with SparseHash)
   # do
   #   bash ${testfile};
   # done
-
-
