@@ -54,8 +54,8 @@ Stacks v2.0b (with SparseHash)
 
 %test
   echo "Testing STACKS"
-  gstacks --version
-  populations --version
+  # gstacks --version
+  # populations --version
   # for testfile in $(ls /tests/*.t);
   # do
   #   bash ${testfile};
