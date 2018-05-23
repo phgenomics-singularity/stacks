@@ -2,16 +2,16 @@ Bootstrap: docker
 From: ubuntu:trusty-20170817
 
 %help
-A Singularity image for Stacks v2.0
+A Singularity image for Stacks v2.0b
 
 %labels
 Maintainer Anders Goncalves da Silva
 Build 1.0
-Stacks v2.0 (with SparseHash)
+Stacks v2.0b (with SparseHash)
 
 %post
 
-  STACKS_VERSION=2.0
+  STACKS_VERSION=2.0b
 
   sudo locale-gen en_US.UTF-8
   sudo update-locale
@@ -49,7 +49,7 @@ Stacks v2.0 (with SparseHash)
   echo "Done"
 
 %runscript
-  echo "Welcome to STACKS 2.0" >&2
+  echo "Welcome to STACKS 2.0b" >&2
   exec "$@"
 
 %test
